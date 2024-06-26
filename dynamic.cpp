@@ -1,6 +1,7 @@
 // citations
 // https://www.youtube.com/watch?v=hagBB17_hvg
 // https://www.geeksforgeeks.org/0-1-knapsack-problem-dp-10/
+// graph of run time https://docs.google.com/spreadsheets/d/1o2jzQsc2TNVixR7Ce9QnOZ_9RcavlURibMvNX3Anl2A/edit?usp=sharing
 
 #include <iostream>
 #include <vector>
