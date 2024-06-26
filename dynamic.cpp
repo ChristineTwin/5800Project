@@ -3,6 +3,10 @@
 // https://www.geeksforgeeks.org/0-1-knapsack-problem-dp-10/
 // graph of run time https://docs.google.com/spreadsheets/d/1o2jzQsc2TNVixR7Ce9QnOZ_9RcavlURibMvNX3Anl2A/edit?usp=sharing
 
+//The below re-uses the DP approach code from KSRecon.cpp
+//Testing to get run times for various C's
+//See graph above for the #bits to represent C vs runtime
+
 #include <iostream>
 #include <vector>
 #include <cstdlib>

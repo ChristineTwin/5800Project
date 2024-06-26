@@ -25,19 +25,24 @@ int knapsack(int C, vector<int> &weights,
             if(item == 0 || capacity == 0){
                 dp[item][capacity] = 0;
             }
+            //if the weight of the current item is <= current capacity
+            //max value is the max of the the value of bag with the item vs bag w/o item
             else if(weights[item-1] <= capacity){
                 dp[item][capacity] = max(values[item-1] + 
                                     dp[item-1][capacity-weights[item-1]], 
                                     dp[item-1][capacity]);
             }
+            //if current item is too large, max value is the value in table above
             else{
                 dp[item][capacity] = dp[item - 1][capacity];
             }
         }
     }
+    //return max in bottom right corner of table
     return dp[weights.size()][C];
 }
 
+//reconstruct the solution
 vector<string> solution(int n, int maxCapacity,vector<int>& weights, 
                         vector<int>& values, vector<string> recipes, 
                         vector< vector<int> > &dp){
@@ -46,9 +51,9 @@ vector<string> solution(int n, int maxCapacity,vector<int>& weights,
 
     while (i > 0 && j > 0){
         if(dp[i][j] == dp[i-1][j]){
-            recipes[i-1] = "";
+            recipes[i-1] = "";//we didn't include this
         }
-        else{
+        else{//if we did include this recipe
             j = j-weights[i-1];
         }
         i--;
@@ -56,6 +61,13 @@ vector<string> solution(int n, int maxCapacity,vector<int>& weights,
     return recipes;
 }
 
+
+//We are using a DP approach to knapsack to find highest "value" recipes
+//when the recipes have a shared, limiting ingredient
+//This would have to be repeated for all limiting ingredients
+//Then would have to choose optimale subset from the set of viable recipes
+//That final choosing could be done with a greedy approach, rather than knapsack
+//Or the meal planning app user could "swipe right/left" too choose from the viable set
 int main(){
     vector<string> recipes;
     recipes.push_back("fried chicken");
@@ -110,8 +122,11 @@ int main(){
     
     vector<vector<int> > dp(weight.size() + 1, vector<int>(C + 1));
     cout << knapsack(C, weight, value, dp) << endl;
+
+    //getting a new vector with just the recipes to use for max value
     vector<string> toUse = solution(weight.size(), C, weight, value, recipes, dp);
 
+    //print the DP table
     for (int i = 0; i < weight.size()+1; i++){
         for (int j = 0; j < C+1; j++){
             cout<< dp[i][j] << ", ";
@@ -120,6 +135,7 @@ int main(){
     }
     cout << endl;
 
+    //print the final choice of recipes
     for (int i = 0; i < toUse.size(); i++){
         if (toUse[i].length()>1){
             cout << toUse[i] << ", ";
