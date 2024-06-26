@@ -1,0 +1,21 @@
+https://www.youtube.com/watch?v=9oI7fg-MIpE
+https://www.youtube.com/watch?v=hagBB17_hvg
+https://www.geeksforgeeks.org/0-1-knapsack-problem-dp-10/
+https://www.youtube.com/watch?v=wFP5VHGHFdk
+
+There are nC subproblems
+each one is constant time because we find the max of 2 computations
+
+C means we have pseudo polynomial running time
+it runs well with small size, but it's not actually polynomial
+
+The actual definition of time complexity.. A measure of the time it takes for 
+algorthm to run as a function of input in bits not just the length of it's input.
+The length of input...
+n is the length of a list of items
+the bits to represent n increases linearly
+W is an integery so really represented by the bits to represent W...
+n2^(bits in W)
+
+input size is O(n* logC) bits (assuming nothing weighs more than C)
+
